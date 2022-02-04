@@ -24,7 +24,7 @@ function serve() {
   });
 
   jsWatched ? watch("./*.js", { ignoreInitial: false }).on('change', js) : nothing;
-  watch('./*.js').on('change', browserSync.reload)
+  watch('./js/*.js').on('change', browserSync.reload)
   watch("./*.html").on('change', browserSync.reload);
   watch('./scss/*.scss', { ignoreInitial: false }, scss);
 }
