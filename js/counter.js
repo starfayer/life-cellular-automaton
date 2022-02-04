@@ -1,3 +1,5 @@
+import { Canvas } from "./canvas.js";
+
 class Cell {
   constructor(x, y, isLive) {
     this.x = x;
@@ -87,3 +89,10 @@ class Game {
 let field = new Field(20, 20);
 const game = new Game(field);
 game.start(1000);
+
+// const canvasElement = document.querySelector('canvas');
+
+// const canvas = new Canvas(canvasElement);
+// canvas.initGrid();
+
+export {Cell, Field, Game}

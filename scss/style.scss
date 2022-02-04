@@ -1,0 +1,99 @@
+@import 'normalize.scss';
+
+body {
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+
+h2, h3 {
+  font-weight: 400;
+}
+
+h3 {
+  margin: .8em 0;
+}
+
+.container {
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  padding-top: .5em;
+  margin: 0;
+}
+
+.header, .title {
+  font-size: 40px;
+}
+
+.text {
+  margin-bottom: 2em;
+}
+
+.main {
+  height: 80%;
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  &__header {
+    font-size: 30px;
+  }
+
+  &__item {
+    margin-bottom: 2em;
+  }
+
+  &__item:first-of-type .form {
+    margin-left: 10px;
+
+  }
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  &__item {
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__container {
+    display: flex;
+    width: 30%;
+    margin-left: 20%;
+  }
+  &__item--size {
+    width: 100%;
+  }
+  &__input {
+    width: 100%;
+    text-align: center;
+    padding-left: 10px;
+  }
+
+  &__img {
+    position: relative;
+    top: 8px;
+  }
+}
+
+.canvas-container {
+  width: 60%;
+}
+.canvas {
+  border: 1px solid #000;
+}
