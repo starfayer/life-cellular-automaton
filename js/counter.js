@@ -1,3 +1,5 @@
+import { Canvas } from "./canvas.js";
+
 class Cell {
   constructor(x, y, isLive) {
     this.x = x;
@@ -8,19 +10,32 @@ class Cell {
 }
 
 class Field {
-  constructor(width, height) {
+  constructor(width, height, cellSize) {
     this.width = width;
     this.height = height;
+    this.cellSize = cellSize;
   }
   
-  initField(cb) {
-    this.field = []
-    for (let i = 0; i < this.width; i++) {
-      this.field[i] = []
-      for (let j = 0; j < this.height; j++) {
-        const cell = new Cell(i, j, cb ? cb() : false);
-        this.field[i].push(cell);
+  initField(template) {
+    this.field = [];
+    let x = 0;
+    for (let i = 0; i < Math.floor(this.width / this.cellSize); i++) {
+      this.field[i] = [];
+      let y = 0;
+      for (let j = 0; j < Math.floor(this.height / this.cellSize); j++) {
+        const cell = new Cell(x, y, true);
+        if (template) {
+          if (template.find(el =>
+            el.x === cell.x && el.y == cell.y && el.isLive == cell.isLive
+          ))
+            this.field[i][j] = cell;
+          else
+            this.field[i][j] = new Cell(x, y, false);
+        } else
+          this.field[i][j] = new Cell(x, y, false);
+        y += this.cellSize;
       }
+      x += this.cellSize;
     }
     return this;
   }
@@ -39,9 +54,9 @@ class Field {
     let count = 0;
 
     for (let ix = preX; ix <= x + 1; ix++) {
-      const i = ix < 0 ? this.field.length - 1 : ix > this.width - 1 ? 0 : ix;
+      const i = ix < 0 ? this.field.length - 1 : ix > this.field.length - 1 ? 0 : ix;
       for (let jy = preY; jy <= y + 1; jy++) {
-        const j = jy < 0 ? this.field.length - 1 : jy > this.height - 1 ? 0 : jy;
+        const j = jy < 0 ? this.field.length - 1 : jy > this.field.length - 1 ? 0 : jy;
 
         if (i === x && j === y) continue;
 
@@ -67,26 +82,15 @@ class Game {
     this.initialField = initialField;
   }
 
-  start(updateTime) {
-    this.initialField.initField(() => Math.random() > 0.5);
-    let startField = this.initialField.writeNeighbours().checkLive();
 
-      setInterval(() => {
-        let fieldToFill = this.initialField.initField();
+  draw(fieldToDraw, canvasElement) {
 
-        for (let i = 0; i < fieldToFill.field.length; i++) {
-          for (let j = 0; j < fieldToFill.field[i].length; j++) {
-            fieldToFill.field[i][j].isLive = startField[i][j].isLive ? true : false;
-          }
-        }
-        startField = fieldToFill.writeNeighbours().checkLive();
-      }, updateTime)
   }
 }
 
-let field = new Field(20, 20);
-const game = new Game(field);
-game.start(1000);
+// let field = new Field(20, 20);
+// const game = new Game(field);
+// game.start(1000);
 
 // const canvasElement = document.querySelector('canvas');
 
