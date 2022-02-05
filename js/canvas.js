@@ -1,4 +1,4 @@
-import { Field, Cell, Game } from "./counter.js";
+import { Field, Cell } from "./counter.js";
 
 class Canvas {
   constructor(canvasElement) {
