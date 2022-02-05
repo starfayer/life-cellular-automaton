@@ -1,9 +1,10 @@
 @import 'normalize.scss';
 
 body {
-  height: 100vh;
+  height: 125vh;
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
+  background-color: #54BAB9;
 }
 
 h2, h3 {
@@ -17,7 +18,9 @@ h3 {
 .container {
   width: 90%;
   height: 100%;
-  margin: 0 auto;
+  margin: 1em auto;
+  padding: 1em;
+  background-color: #E9DAC1;
 }
 
 .title {
@@ -100,7 +103,6 @@ h3 {
   padding: .35em 1.2em;
   border: .1em solid #000;
   margin-bottom: 1em;
-  // margin: 0 0.3em 0.3em 0;
   border-radius: .2em;
   text-decoration: none;
   color:#000;
@@ -122,6 +124,7 @@ h3 {
   width: 60%;
 }
 .canvas {
+  background-color: #fff;
   border: 1px solid #000;
 }
 
