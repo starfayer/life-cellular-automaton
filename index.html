@@ -19,7 +19,7 @@
         <div class="settings__item">
           <h3 class="settings__header">Size</h3>
           <div class="text">Here you can choose the size of a gaming field</div> 
-          <form class="form" action="">
+          <form class="form">
             <div class="form__item">
               <label for="width">Width:</label>
               <input class="form__input" type="number" value="500" name="width" id="width" min="100" step="50">  
@@ -32,7 +32,7 @@
             <div class="form__container">
               <div class="form__item form__item--size">
                 <label for="size">Size of cell:</label>
-                <input class="form__input" type="number" value="10" name="size" id="size" min="10" max="100" step="1">  
+                <input class="form__input" type="number" value="25" name="size" id="size" min="10" max="100" step="5">  
               </div>  
             </div>
           </form>
@@ -40,14 +40,16 @@
         <div class="settings__item">
           <h3 class="settings__header">Type of 1st generation</h3>
           <div class="text">Here you can choose how 1st generation will appear</div> 
-          <form class="form" action="">
-            <select name="" id="">
-              <option value="random">Random generation</option>
+          <form class="form">
+            <select name="select" id="select">
               <option value="input">Generation from input</option>
+              <option value="random">Random generation</option>
             </select>
           </form>
+          <button class="button" id="clear-btn">Clear field</button>
         </div>
         <div class="settings__error"></div>
+        <button class="button" id="start-btn">Start</button>
       </div>
       <div class="canvas-container">
         <h2 class="header">Game</h2>

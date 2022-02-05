@@ -1,8 +1,9 @@
 class Settings {
-  constructor(width, height, cellSize) {
+  constructor(width, height, cellSize, generationType) {
     this.width = width;
     this.height = height;
     this.cellSize = cellSize;
+    this.generationType = generationType;
   }
 
   initSettings(canvasElement) {
@@ -11,51 +12,31 @@ class Settings {
   }
 
   events(canvasElement, canvasObject) {
-    this.width.addEventListener('input', () => {
-      if ((this.width.value) >= 100) {
-        canvasElement.width = this.width.value;
-        canvasObject.width = canvasElement.width;
-        try {
-          if (!this.checkSizeOfCell()) {
-            throw new Error('Size of cells on field is undefined');
-          }
-          this.printError();
-          } catch (err) {
-            this.printError(err);
-          }
+    [this.width, this.height, this.cellSize].forEach(el => {
+      el.addEventListener('input', event => {
+        if (event.target.value >= 100 || event.target.id === 'size') {
+          canvasElement.width = this.width.value;
+          canvasElement.height = this.height.value;
 
-        canvasObject.initGrid(parseInt(this.cellSize.value));
-      }
+          canvasObject.width = canvasElement.width;
+          canvasObject.height = canvasElement.height;
+          try {
+            if (!this.checkSizeOfCell()) {
+              throw new Error('Size of cells on field is undefined');
+            }
+            this.printError();
+            } catch (err) {
+              this.printError(err);
+            }
+  
+          canvasObject.initGrid(parseInt(this.cellSize.value));
+        }
+      })
     })
 
-    this.height.addEventListener('input', () => {
-      if ((this.height.value) >= 100) {
-        canvasElement.height = this.height.value;
-        canvasObject.height = canvasElement.height;
-        try {
-          if (!this.checkSizeOfCell()) {
-            throw new Error('Size of cells on field is undefined');
-          }
-          this.printError();
-          } catch (err) {
-            this.printError(err);
-          }
-
-        canvasObject.initGrid(parseInt(this.cellSize.value));
-      }
-    })
-
-    this.cellSize.addEventListener('input', () => {
-      try {
-        if (!this.checkSizeOfCell()) {
-          throw new Error('Size of cells on field is undefined');
-        }
-        this.printError();
-        } catch (err) {
-          this.printError(err);
-        }
-        
-      canvasObject.initGrid(parseInt(this.cellSize.value));
+    this.generationType.addEventListener('change', event => {
+      console.log(event.type)
+      canvasObject.genCheck(event.target.value);
     })
   }
 

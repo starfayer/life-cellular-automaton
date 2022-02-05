@@ -50,12 +50,17 @@ h3 {
   }
 
   &__item {
+    position: relative;
     margin-bottom: 2em;
   }
 
   &__item:first-of-type .form {
     margin-left: 10px;
+  }
 
+  &__error {
+    margin-bottom: 1em;
+    transition: all .2s ease-in-out;
   }
 }
 
@@ -91,9 +96,31 @@ h3 {
   }
 }
 
+.button {
+  padding: .35em 1.2em;
+  border: .1em solid #000;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: .2em;
+  text-decoration: none;
+  color:#000;
+  text-align: center;
+  transition: all .2s ease-in-out;
+  cursor: pointer;
+}
+.button:hover {
+  color:#fff;
+  background-color:#000;
+}
+#clear-btn {
+  position: absolute;
+  right: 0;
+  bottom: -5%;
+}
+
 .canvas-container {
   width: 60%;
 }
 .canvas {
   border: 1px solid #000;
 }
+

@@ -1,5 +1,3 @@
-import { Canvas } from "./canvas.js";
-
 class Cell {
   constructor(x, y, isLive) {
     this.x = x;

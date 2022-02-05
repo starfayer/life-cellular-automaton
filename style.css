@@ -386,10 +386,15 @@ h3 {
   font-size: 30px;
 }
 .settings__item {
+  position: relative;
   margin-bottom: 2em;
 }
 .settings__item:first-of-type .form {
   margin-left: 10px;
+}
+.settings__error {
+  margin-bottom: 1em;
+  transition: all 0.2s ease-in-out;
 }
 
 .form {
@@ -419,6 +424,29 @@ h3 {
 .form__img {
   position: relative;
   top: 8px;
+}
+
+.button {
+  padding: 0.35em 1.2em;
+  border: 0.1em solid #000;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.2em;
+  text-decoration: none;
+  color: #000;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.button:hover {
+  color: #fff;
+  background-color: #000;
+}
+
+#clear-btn {
+  position: absolute;
+  right: 0;
+  bottom: -5%;
 }
 
 .canvas-container {
