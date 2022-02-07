@@ -96,7 +96,6 @@ class Canvas {
 
     let timer = setInterval(() => {
       let fieldToFill = this.initialField.initField();
-      console.log(startField)
       for (let i = 0; i < fieldToFill.field.length; i++) {
         for (let j = 0; j < fieldToFill.field[i].length; j++) {
           fieldToFill.field[i][j].isLive = startField[i][j].isLive ? true : false;

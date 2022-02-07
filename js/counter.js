@@ -59,7 +59,11 @@ class Field {
   checkLive() {
     for (let row of this.field)
       for (let el of row) 
-      el.isLive = el.neighbourCount > 3 || el.neighbourCount < 2 ? false : true;
+        if (!el.isLive) {
+          el.isLive = el.neighbourCount === 3 ? true : false;
+        } else {
+          el.isLive = el.neighbourCount > 3 || el.neighbourCount < 2 ? false : true;
+        }
 
     return this.field;
   }

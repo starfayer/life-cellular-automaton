@@ -35,7 +35,6 @@ class Settings {
     })
 
     this.generationType.addEventListener('change', event => {
-      console.log(event.type)
       canvasObject.genCheck(event.target.value);
     })
   }
